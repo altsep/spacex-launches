@@ -1,5 +1,5 @@
 export interface Launch {
-  fairings: Fairings;
+  fairings: Fairings | null;
   links: Links;
   static_fire_date_utc: string | null;
   static_fire_date_unix: number | null;
@@ -8,7 +8,7 @@ export interface Launch {
   rocket: string | null;
   success: boolean | null;
   failures: Failure[];
-  details: string;
+  details: string | null;
   crew: Crew[];
   ships: string[];
   capsules: string[];
@@ -57,9 +57,9 @@ export interface Flickr {
 }
 
 export interface Fairings {
-  reused: boolean;
-  recovery_attempt: boolean;
-  recovered: boolean;
+  reused: boolean | null;
+  recovery_attempt: boolean | null;
+  recovered: boolean | null;
   ships: string[];
 }
 
