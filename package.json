@@ -11,7 +11,7 @@
     "test": "jest",
     "lint": "tsc && eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "tsc && eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "format": "prettier --check --write src tests"
+    "format": "prettier --check --write ."
   },
   "browserslist": {
     "production": [

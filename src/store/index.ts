@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { spaceXApi } from '../services/spacex';
+import { spaceXApi } from '../services/spaceX';
 
 const store = configureStore({
   reducer: {

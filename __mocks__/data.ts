@@ -1,25 +1,14 @@
-export const launch = {
-  fairings: {
-    reused: false,
-    recovery_attempt: false,
-    recovered: false,
-    ships: [],
-  },
+import { Launch } from '../src/models/launch.model';
+
+export const launch: Launch = {
+  fairings: { reused: false, recovery_attempt: false, recovered: false, ships: [] },
   links: {
     patch: {
       small: 'https://images2.imgbox.com/94/f2/NN6Ph45r_o.png',
       large: 'https://images2.imgbox.com/5b/02/QcxHUb5V_o.png',
     },
-    reddit: {
-      campaign: null,
-      launch: null,
-      media: null,
-      recovery: null,
-    },
-    flickr: {
-      small: [],
-      original: [],
-    },
+    reddit: { campaign: null, launch: null, media: null, recovery: null },
+    flickr: { small: [], original: [] },
     presskit: null,
     webcast: 'https://www.youtube.com/watch?v=0a_00nJ_Y88',
     youtube_id: '0a_00nJ_Y88',
@@ -32,13 +21,7 @@ export const launch = {
   window: 0,
   rocket: '5e9d0d95eda69955f709d1eb',
   success: false,
-  failures: [
-    {
-      time: 33,
-      altitude: null,
-      reason: 'merlin engine failure',
-    },
-  ],
+  failures: [{ time: 33, altitude: null, reason: 'merlin engine failure' }],
   details: 'Engine failure at 33 seconds and loss of vehicle',
   crew: [],
   ships: [],
