@@ -1,6 +1,6 @@
-import { Launch } from '../src/models/launch';
+import { LaunchFull } from '../src/models/launch';
 
-export const launch: Launch = {
+export const launch: LaunchFull = {
   fairings: { reused: false, recovery_attempt: false, recovered: false, ships: [] },
   links: {
     patch: {

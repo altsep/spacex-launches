@@ -1,6 +1,7 @@
-import { Launch } from '../src/models/launch';
+import rocketImg from '../src/assets/rocket_placeholder.jpg';
+import { LaunchFull } from '../src/models/launch';
 
-export const launches: Launch[] = [
+export const launches: LaunchFull[] = [
   {
     fairings: {
       reused: false,
@@ -93,7 +94,7 @@ export const launches: Launch[] = [
       },
       flickr: {
         small: [],
-        original: [],
+        original: [rocketImg],
       },
       presskit: null,
       webcast: 'https://www.youtube.com/watch?v=Lk4zQ2wP-Nc',
@@ -166,7 +167,7 @@ export const launches: Launch[] = [
       },
       flickr: {
         small: [],
-        original: [],
+        original: [rocketImg],
       },
       presskit: null,
       webcast: 'https://www.youtube.com/watch?v=v0w9p3U8860',
@@ -238,7 +239,7 @@ export const launches: Launch[] = [
       },
       flickr: {
         small: [],
-        original: [],
+        original: [rocketImg],
       },
       presskit: null,
       webcast: 'https://www.youtube.com/watch?v=dLQ2tZEH6G0',
@@ -372,7 +373,7 @@ export const launches: Launch[] = [
       },
       flickr: {
         small: [],
-        original: [],
+        original: [rocketImg],
       },
       presskit: 'http://forum.nasaspaceflight.com/index.php?action=dlattach;topic=21869.0;attach=230821',
       webcast: 'https://www.youtube.com/watch?v=nxSxgBKlYws',
@@ -494,7 +495,7 @@ export const launches: Launch[] = [
       },
       flickr: {
         small: [],
-        original: [],
+        original: [rocketImg],
       },
       presskit: 'https://www.nasa.gov/pdf/649910main_cots2_presskit_051412.pdf',
       webcast: 'https://www.youtube.com/watch?v=tpQzDbAY7yI',
@@ -555,7 +556,7 @@ export const launches: Launch[] = [
       },
       flickr: {
         small: [],
-        original: [],
+        original: [rocketImg],
       },
       presskit: 'https://www.nasa.gov/pdf/694166main_SpaceXCRS-1PressKit.pdf',
       webcast: 'https://www.youtube.com/watch?v=-Vk3hiV_zXU',
@@ -617,7 +618,7 @@ export const launches: Launch[] = [
       },
       flickr: {
         small: [],
-        original: [],
+        original: [rocketImg],
       },
       presskit: 'https://www.nasa.gov/sites/default/files/files/Orb2_PRESS_KIT.pdf',
       webcast: 'https://www.youtube.com/watch?v=ik0ElKl5kW4',
@@ -683,7 +684,7 @@ export const launches: Launch[] = [
       },
       flickr: {
         small: [],
-        original: [],
+        original: [rocketImg],
       },
       presskit: 'https://spaceflightnow.com/falcon9/006/UpgradedF9DemoMission_PressKit.pdf',
       webcast: 'https://www.youtube.com/watch?v=uFefasS6bhc',
@@ -750,7 +751,7 @@ export const launches: Launch[] = [
       },
       flickr: {
         small: [],
-        original: [],
+        original: [rocketImg],
       },
       presskit: 'http://www.spacex.com/sites/spacex/files/spacex_ses-8launch_presskit.pdf',
       webcast: 'https://www.youtube.com/watch?v=aAj5xapImEs',
@@ -817,7 +818,7 @@ export const launches: Launch[] = [
       flickr: {
         small: [],
         original: [
-          'https://farm9.staticflickr.com/8617/16789019815_f99a165dc5_o.jpg',
+          rocketImg,
           'https://farm8.staticflickr.com/7619/16763151866_35a0a4d8e1_o.jpg',
           'https://farm9.staticflickr.com/8569/16169086873_4d8829832e_o.png',
         ],
@@ -883,7 +884,7 @@ export const launches: Launch[] = [
       flickr: {
         small: [],
         original: [
-          'https://farm8.staticflickr.com/7615/16670240949_8d43db0e36_o.jpg',
+          rocketImg,
           'https://farm9.staticflickr.com/8597/16856369125_e97cd30ef7_o.jpg',
           'https://farm8.staticflickr.com/7586/16166732954_9338dc859c_o.jpg',
           'https://farm8.staticflickr.com/7603/16855223522_462da54e84_o.jpg',
@@ -957,7 +958,7 @@ export const launches: Launch[] = [
       flickr: {
         small: [],
         original: [
-          'https://farm8.staticflickr.com/7585/16602893909_1181317089_o.jpg',
+          rocketImg,
           'https://farm9.staticflickr.com/8747/16581738577_83e0690136_o.png',
           'https://farm8.staticflickr.com/7285/16581736047_6fd536ab11_o.jpg',
           'https://farm8.staticflickr.com/7597/16789021675_35f0148f78_o.jpg',
@@ -1032,7 +1033,7 @@ export const launches: Launch[] = [
       flickr: {
         small: [],
         original: [
-          'https://farm9.staticflickr.com/8638/16855192031_962f7b1113_o.jpg',
+          rocketImg,
           'https://farm8.staticflickr.com/7603/16648925347_769a6009c7_o.jpg',
           'https://farm9.staticflickr.com/8687/16789027675_cde1bd098a_o.jpg',
           'https://farm8.staticflickr.com/7629/16668638138_7acf13cfb5_o.jpg',
@@ -1105,7 +1106,7 @@ export const launches: Launch[] = [
       flickr: {
         small: [],
         original: [
-          'https://farm8.staticflickr.com/7604/16169087563_0e3559ab5b_o.jpg',
+          rocketImg,
           'https://farm9.staticflickr.com/8742/16233828644_96738200b2_o.jpg',
           'https://farm8.staticflickr.com/7645/16601443698_e70315d1ed_o.jpg',
           'https://farm9.staticflickr.com/8730/16830335046_5f017c17be_o.jpg',
@@ -1172,7 +1173,7 @@ export const launches: Launch[] = [
       flickr: {
         small: [],
         original: [
-          'https://farm8.staticflickr.com/7608/16661753958_9f61f777e7_o.jpg',
+          rocketImg,
           'https://farm9.staticflickr.com/8593/16763199166_38ba2cafc8_o.jpg',
           'https://farm9.staticflickr.com/8655/16789074175_ba03989359_o.png',
           'https://farm9.staticflickr.com/8659/16166761954_ebc2a72b2a_o.jpg',

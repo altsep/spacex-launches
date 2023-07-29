@@ -1,30 +1,15 @@
-import { useState } from 'react';
-import { Launch } from '../models/launch';
-import { sortByDate } from '../utils/helpers/sorting';
+import { ReactNode } from 'react';
 
 type Props = {
-  data: Launch[];
-  setData: (data: Launch[]) => void;
+  children?: ReactNode;
 };
 
-function Controls({ data, setData }: Props) {
-  const [sortMode, setSortMode] = useState<'asc' | 'desc'>('asc');
-
-  const handleSortByDate = () => {
-    const sortedMockData = sortByDate(data, sortMode);
-    setData(sortedMockData);
-    setSortMode((state) => (state === 'asc' ? 'desc' : 'asc'));
-  };
-
-  return (
-    <button
-      className="ml-auto block bg-gray-200 hover:bg-gray-100 active:bg-gray-200 border border-gray-500 py-1 px-2 rounded"
-      type="button"
-      onClick={handleSortByDate}
-    >
-      Sort by date
-    </button>
-  );
+function Controls({ children }: Props) {
+  return <div className="flex justify-end gap-3">{children}</div>;
 }
+
+Controls.defaultProps = {
+  children: null,
+};
 
 export { Controls };

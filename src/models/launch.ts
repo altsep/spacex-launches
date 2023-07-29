@@ -1,4 +1,6 @@
-export interface Launch {
+export type Launch = Pick<LaunchFull, 'name' | 'details' | 'date_utc' | 'date_unix' | 'success' | 'id' | 'links'>;
+
+export interface LaunchFull {
   fairings: Fairings | null;
   links: Links;
   static_fire_date_utc: string | null;
