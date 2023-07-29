@@ -1,4 +1,4 @@
-import { Launch } from '../src/models/launch.model';
+import { Launch } from '../src/models/launch';
 
 export const launches: Launch[] = [
   {

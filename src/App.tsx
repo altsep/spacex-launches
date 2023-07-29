@@ -1,19 +1,9 @@
-import * as TimSort from 'timsort';
-import { launches } from '../__mocks__/launches';
-import { Card } from './components/Card';
-
-const mockData = [...launches];
-
-TimSort.sort(mockData, (a, b) => b.date_unix - a.date_unix);
+import { Main } from './components/Main';
 
 function App() {
   return (
-    <div className="bg-stone-100 w-full h-screen overflow-auto">
-      <div className="w-full max-w-6xl mx-auto flex flex-wrap lg:gap-6 lg:my-6 justify-center">
-        {mockData.map((l) => (
-          <Card data={l} key={l.id} />
-        ))}
-      </div>
+    <div className="bg-stone-100 h-screen overflow-auto">
+      <Main />
     </div>
   );
 }
