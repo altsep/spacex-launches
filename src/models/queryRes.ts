@@ -1,3 +1,7 @@
+import { Launch } from './launch';
+
+export type LaunchQueryRes = QueryRes<Launch>;
+
 export type QueryRes<T> = {
   docs: T[];
   totalDocs: number;

@@ -1,16 +1,9 @@
 export interface LaunchesQueryArg {
-  query: QueryClass;
-  options: Options;
+  query: QueryParams;
+  options: QueryOptions;
 }
 
-export interface Options {
-  select: string;
-  limit: number;
-  sort: string;
-  page: number;
-}
-
-export interface QueryClass {
+export interface QueryParams {
   date_utc: DateUTC;
   success: boolean;
 }
@@ -18,4 +11,11 @@ export interface QueryClass {
 export interface DateUTC {
   $gte: string;
   $lt: string;
+}
+
+export interface QueryOptions {
+  select: string;
+  limit: number;
+  sort: string;
+  page: number;
 }
