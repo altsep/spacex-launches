@@ -1,6 +1,6 @@
-import { Button } from './components/Button';
-import { CardList } from './components/CardList';
-import { Controls } from './components/Controls';
+import { CardList } from './components/cards/CardList';
+import { Button } from './components/controls/Button';
+import { Controls } from './components/controls/Controls';
 import { useAppDispatch } from './store/hooks';
 import { toggleSort } from './store/queryArgOpts';
 

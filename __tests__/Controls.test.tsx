@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { Button } from '../src/components/Button';
-import { Controls } from '../src/components/Controls';
+import { Button } from '../src/components/controls/Button';
+import { Controls } from '../src/components/controls/Controls';
 
 describe('Controls', () => {
   it('renders', () => {
