@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import { Launch } from '../models/launch';
+import { CardWrapper } from './CardWrapper';
 
 type Props = {
   item: Launch;
@@ -7,10 +8,11 @@ type Props = {
 
 function Card({ item }: Props) {
   const { name, details, date_utc: date, links } = item;
-  const [img] = links.flickr.original;
+  // const [img] = links.flickr.original;
+  const img = null;
   const formattedDate = dayjs(date).format('DD/MM/YYYY');
   return (
-    <div className="rounded border-gray-300 group lg:border overflow-hidden m-2 sm:m-4 lg:m-0 relative flex flex-col lg:h-80">
+    <CardWrapper>
       <div className="flex justify-between flex-col sm:flex-row gap-3 h-full mb-9  lg:m-3">
         <div className="flex flex-col">
           <h1 className="font-semibold font-serif text-xl mb-3">{name}</h1>
@@ -31,7 +33,7 @@ function Card({ item }: Props) {
         {formattedDate}
       </time>
       <div className="border-b border-gray-300 lg:hidden" />
-    </div>
+    </CardWrapper>
   );
 }
 

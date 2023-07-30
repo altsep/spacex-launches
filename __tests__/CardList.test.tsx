@@ -11,6 +11,6 @@ describe('CardList', () => {
   });
 
   it('renders', () => {
-    render(<CardList data={data} loading={false} error={false} />);
+    render(<CardList data={data} loading={false} error={false} handleLoadMore={() => null} />);
   });
 });

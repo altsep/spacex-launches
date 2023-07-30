@@ -1,15 +1,15 @@
 import { Launch } from '../models/launch';
 import { Card } from './Card';
+import { LoadMore } from './LoadMore';
 
 type Props = {
   data: Launch[];
   loading: boolean;
   error: boolean;
+  handleLoadMore: () => void;
 };
 
-function CardList({ data, loading, error }: Props) {
-  if (loading) return 'Loading...';
-
+function CardList({ data, loading, error, handleLoadMore }: Props) {
   if (error) return 'Error occured';
 
   return (
@@ -17,6 +17,7 @@ function CardList({ data, loading, error }: Props) {
       {data.map((item) => (
         <Card item={item} key={item.id} />
       ))}
+      <LoadMore handleClick={handleLoadMore} loading={loading} />
     </div>
   );
 }
