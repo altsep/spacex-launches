@@ -6,7 +6,6 @@ import { toggleSort } from './store/queryArgOpts.slice';
 
 // TODO: add tests
 // TODO: remove placeholder assets
-// TODO: use rtk instead of prop drilling
 // TODO: allow to conditionally enable infinite scroll
 
 function App() {
