@@ -7,6 +7,7 @@ export interface Options {
   select: string;
   limit: number;
   sort: string;
+  page: number;
 }
 
 export interface QueryClass {

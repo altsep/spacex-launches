@@ -12,5 +12,6 @@ export const DEFAULT_LAUNCHES_QUERY_ARG: LaunchesQueryArg = {
     select: 'id name details date_utc date_unix links.flickr',
     limit: 3,
     sort: '-date_unix',
+    page: 1,
   },
 };
