@@ -1,4 +1,4 @@
-import { LaunchFull } from '../src/models/launch';
+import { LaunchFull } from '../src/models/launch.model';
 
 export const launch: LaunchFull = {
   fairings: { reused: false, recovery_attempt: false, recovered: false, ships: [] },

@@ -2,7 +2,7 @@ import { CardList } from './components/cards/CardList';
 import { Button } from './components/controls/Button';
 import { Controls } from './components/controls/Controls';
 import { useAppDispatch } from './store/hooks';
-import { toggleSort } from './store/queryArgOpts';
+import { toggleSort } from './store/queryArgOpts.slice';
 
 // TODO: add tests
 // TODO: remove placeholder assets

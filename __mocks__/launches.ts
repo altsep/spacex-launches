@@ -1,5 +1,5 @@
 import rocketImg from '../src/assets/rocket_placeholder.jpg';
-import { LaunchFull } from '../src/models/launch';
+import { LaunchFull } from '../src/models/launch.model';
 
 export const launches: LaunchFull[] = [
   {

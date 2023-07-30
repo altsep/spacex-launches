@@ -1,6 +1,6 @@
-import { useGetLaunchesByQueryQuery } from '../../services/spaceX';
+import { useGetLaunchesByQueryQuery } from '../../services/spaceX.service';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { incrementPage } from '../../store/queryArgOpts';
+import { incrementPage } from '../../store/queryArgOpts.slice';
 import { CardWrapper } from './CardWrapper';
 
 function LoadMore() {

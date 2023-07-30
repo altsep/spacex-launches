@@ -1,4 +1,4 @@
-import { useGetLaunchesByQueryQuery } from '../../services/spaceX';
+import { useGetLaunchesByQueryQuery } from '../../services/spaceX.service';
 import { useAppSelector } from '../../store/hooks';
 import { Card } from './Card';
 import { LoadMore } from './LoadMore';

@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { QueryOptions } from '../models/launchesQueryArg';
-import { LaunchQueryRes } from '../models/queryRes';
-import { API_BASE_URL } from '../utils/constants/apiBase';
-import { DEFAULT_LAUNCHES_QUERY_ARG } from '../utils/constants/defaultLaunchesQueryArg';
+import { QueryOptions } from '../models/launchesQueryArg.model';
+import { LaunchQueryRes } from '../models/queryRes.model';
+import { API_BASE_URL } from '../utils/constants/apiBase.constant';
+import { DEFAULT_LAUNCHES_QUERY_ARG } from '../utils/constants/defaultLaunchesQueryArg.constant';
 
 export const spaceXApi = createApi({
   reducerPath: 'spaceXApi',

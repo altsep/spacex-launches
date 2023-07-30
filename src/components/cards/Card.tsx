@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { Launch } from '../../models/launch';
+import { Launch } from '../../models/launch.model';
 import { CardImg } from './CardImg';
 import { CardText } from './CardText';
 import { CardWrapper } from './CardWrapper';

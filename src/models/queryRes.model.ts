@@ -1,4 +1,4 @@
-import { Launch } from './launch';
+import { Launch } from './launch.model';
 
 export type LaunchQueryRes = QueryRes<Launch>;
 

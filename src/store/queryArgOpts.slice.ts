@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { LaunchQueryRes } from '../models/queryRes';
-import { DEFAULT_LAUNCHES_QUERY_ARG } from '../utils/constants/defaultLaunchesQueryArg';
+import { LaunchQueryRes } from '../models/queryRes.model';
+import { DEFAULT_LAUNCHES_QUERY_ARG } from '../utils/constants/defaultLaunchesQueryArg.constant';
 
 export const queryArgOptsSlice = createSlice({
   name: 'queryArgOpts',

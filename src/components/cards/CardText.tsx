@@ -1,4 +1,4 @@
-import { Launch } from '../../models/launch';
+import { Launch } from '../../models/launch.model';
 
 type Props = Pick<Launch, 'name' | 'details'>;
 

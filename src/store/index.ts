@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { spaceXApi } from '../services/spaceX';
-import { queryArgOpts } from './queryArgOpts';
+import { spaceXApi } from '../services/spaceX.service';
+import { queryArgOpts } from './queryArgOpts.slice';
 
 const store = configureStore({
   reducer: {

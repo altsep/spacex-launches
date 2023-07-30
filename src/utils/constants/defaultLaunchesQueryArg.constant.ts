@@ -1,4 +1,4 @@
-import { LaunchesQueryArg } from '../../models/launchesQueryArg';
+import { LaunchesQueryArg } from '../../models/launchesQueryArg.model';
 
 export const DEFAULT_LAUNCHES_QUERY_ARG: LaunchesQueryArg = {
   query: {
