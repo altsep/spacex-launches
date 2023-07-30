@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Launch } from '../models/launch';
-import { LaunchesQueryArg } from '../models/launchesQueryArg';
 import { QueryRes } from '../models/queryRes';
 import { API_BASE_URL } from '../utils/constants/apiBase';
+import { DEFAULT_LAUNCHES_QUERY_ARG } from '../utils/constants/defaultLaunchesQueryArg';
 
 export const spaceXApi = createApi({
   reducerPath: 'spaceXApi',
@@ -11,8 +11,14 @@ export const spaceXApi = createApi({
     getLaunches: builder.query<Launch[], void>({
       query: () => 'launches',
     }),
-    getLaunchesByQuery: builder.query<QueryRes<Launch>, LaunchesQueryArg>({
-      query: (body) => {
+    getLaunchesByQuery: builder.query<QueryRes<Launch>, string>({
+      query: (sortParam) => {
+        const body = { ...DEFAULT_LAUNCHES_QUERY_ARG };
+
+        if (sortParam != null) {
+          body.options.sort = sortParam;
+        }
+
         return {
           url: 'launches/query',
           method: 'POST',

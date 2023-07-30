@@ -4,6 +4,6 @@ import { Card } from '../src/components/Card';
 
 describe('Card', () => {
   it('renders', () => {
-    render(<Card data={launch} />);
+    render(<Card item={launch} />);
   });
 });

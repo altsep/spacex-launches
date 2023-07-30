@@ -2,11 +2,11 @@ import dayjs from 'dayjs';
 import { Launch } from '../models/launch';
 
 type Props = {
-  data: Launch;
+  item: Launch;
 };
 
-function Card({ data }: Props) {
-  const { name, details, date_utc: date, links } = data;
+function Card({ item }: Props) {
+  const { name, details, date_utc: date, links } = item;
   const [img] = links.flickr.original;
   const formattedDate = dayjs(date).format('DD/MM/YYYY');
   return (

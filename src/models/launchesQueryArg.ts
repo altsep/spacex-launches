@@ -6,6 +6,7 @@ export interface LaunchesQueryArg {
 export interface Options {
   select: string;
   limit: number;
+  sort: string;
 }
 
 export interface QueryClass {

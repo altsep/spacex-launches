@@ -1,42 +1,33 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { launches } from '../../__mocks__/launches';
-import { Launch } from '../models/launch';
 import { useGetLaunchesByQueryQuery } from '../services/spaceX';
 import { DEFAULT_LAUNCHES_QUERY_ARG } from '../utils/constants/defaultLaunchesQueryArg';
-import { sortByDate } from '../utils/helpers/sorting';
 import { Button } from './Button';
 import { CardList } from './CardList';
 import { Code } from './Code';
 import { Controls } from './Controls';
+import { Launch } from '../models/launch';
+
+// TODO: add tests
+// TODO: implement lazy-loading of cards
+// TODO: remove placeholder assets
 
 function Main() {
-  const { data, error, isLoading } = useGetLaunchesByQueryQuery(DEFAULT_LAUNCHES_QUERY_ARG);
+  const [sortParam, setSortParam] = useState(DEFAULT_LAUNCHES_QUERY_ARG.options.sort);
+
+  const { data, error, isLoading } = useGetLaunchesByQueryQuery(sortParam);
 
   const [shouldUseMockData, setShouldUseMockData] = useState(true);
 
-  const sortedMockData = useMemo(() => sortByDate([...launches], 'desc'), []);
+  const launchesData = useMemo<Launch[]>(
+    () => (data != null && !shouldUseMockData ? data.docs : [...launches]),
+    [data, shouldUseMockData]
+  );
 
-  const [launchesData, setLaunchesData] = useState<Launch[]>([]);
+  const handleDataType = () => setShouldUseMockData((prevState) => !prevState);
 
-  useEffect(() => {
-    if (shouldUseMockData) {
-      setLaunchesData(sortedMockData);
-    } else if (data?.docs) {
-      setLaunchesData(data.docs);
-    } else {
-      setLaunchesData([]);
-    }
-  }, [data, shouldUseMockData, sortedMockData]);
-
-  const [sortMode, setSortMode] = useState<'asc' | 'desc'>('asc');
-
-  const handleDataType = () => setShouldUseMockData((prev) => !prev);
-
-  const handleSortByDate = () => {
-    const sortedData = sortByDate(launchesData, sortMode);
-    setLaunchesData(sortedData);
-    setSortMode((state) => (state === 'asc' ? 'desc' : 'asc'));
-  };
+  const handleSortByDate = () =>
+    setSortParam((prevState) => (prevState[0] === '-' ? prevState.slice(1) : `-${prevState}`));
 
   return (
     <div className="max-w-6xl mx-auto m-1 lg:px-6 2xl:max-w-[1920px]">

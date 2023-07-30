@@ -6,7 +6,7 @@ describe('Controls', () => {
   it('renders', () => {
     render(
       <Controls>
-        <Button handleClick={() => console.log('Testing controls')} textContent="Test btn" />
+        <Button handleClick={() => undefined} textContent="Test btn" />
       </Controls>
     );
   });

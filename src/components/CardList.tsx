@@ -14,8 +14,8 @@ function CardList({ data, loading, error }: Props) {
 
   return (
     <div className="w-full my-6 lg:grid lg:grid-cols-2 lg:gap-6 2xl:grid-cols-3">
-      {data.map((l) => (
-        <Card data={l} key={l.id} />
+      {data.map((item) => (
+        <Card item={item} key={item.id} />
       ))}
     </div>
   );
