@@ -1,17 +1,17 @@
-type Props = { img?: string };
+import { useGetRocketImageByIdQuery } from '../../services/spaceX.service';
 
-function CardImg({ img }: Props) {
-  if (img != null) {
+type Props = { rocket: string | null };
+
+function CardImg({ rocket }: Props) {
+  const { data = null } = useGetRocketImageByIdQuery(rocket, { skip: !rocket });
+
+  if (data != null) {
     return (
-      <a className="h-40 sm:w-48 sm:h-48 flex-shrink-0" href={img} target="_blank" rel="noopener noreferrer">
-        <img className="h-full w-full object-cover mx-auto rounded sm:rounded-full" src={img} alt="" loading="lazy" />
+      <a className="h-40 sm:w-48 sm:h-48 flex-shrink-0" href={data} target="_blank" rel="noopener noreferrer">
+        <img className="h-full w-full object-cover mx-auto rounded sm:rounded-full" src={data} alt="" loading="lazy" />
       </a>
     );
   }
 }
-
-CardImg.defaultProps = {
-  img: null,
-};
 
 export { CardImg };

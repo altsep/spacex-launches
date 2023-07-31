@@ -1,15 +1,14 @@
-import { ReactNode } from 'react';
+import { useAppDispatch } from '../../store/hooks';
+import { toggleSort } from '../../store/queryArgOpts.slice';
+import { Button } from './Button';
 
-type Props = {
-  children?: ReactNode;
-};
-
-function Controls({ children }: Props) {
-  return <div className="flex justify-end gap-3">{children}</div>;
+function Controls() {
+  const dispatch = useAppDispatch();
+  return (
+    <div className="flex justify-end gap-3">
+      <Button textContent="Sort by date" handleClick={() => dispatch(toggleSort())} />
+    </div>
+  );
 }
-
-Controls.defaultProps = {
-  children: null,
-};
 
 export { Controls };

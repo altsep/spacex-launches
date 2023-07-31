@@ -9,8 +9,8 @@ export const DEFAULT_LAUNCHES_QUERY_ARG: LaunchesQueryArg = {
     success: true,
   },
   options: {
-    select: 'id name details date_utc date_unix links.flickr',
-    limit: 3,
+    select: 'id name details date_utc date_unix rocket',
+    limit: 10,
     sort: '-date_unix',
     page: 1,
   },

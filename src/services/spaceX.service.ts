@@ -3,6 +3,7 @@ import { QueryOptions } from '../models/launchesQueryArg.model';
 import { LaunchQueryRes } from '../models/queryRes.model';
 import { API_BASE_URL } from '../utils/constants/apiBase.constant';
 import { DEFAULT_LAUNCHES_QUERY_ARG } from '../utils/constants/defaultLaunchesQueryArg.constant';
+import { Rocket } from '../models/rocket.model';
 
 export const spaceXApi = createApi({
   reducerPath: 'spaceXApi',
@@ -17,14 +18,14 @@ export const spaceXApi = createApi({
         }
 
         return {
-          url: 'launches/query',
+          url: 'v5/launches/query',
           method: 'POST',
           body,
         };
       },
       serializeQueryArgs: ({ endpointName }) => endpointName,
       merge: (currentCache, newItems) => {
-        if (currentCache.page === newItems.page || newItems.page === 1) {
+        if (newItems.page === 1) {
           return newItems;
         }
 
@@ -34,7 +35,11 @@ export const spaceXApi = createApi({
         return currentArg !== previousArg;
       },
     }),
+    getRocketImageById: builder.query<string, string | null>({
+      query: (id) => `v4/rockets/${id}`,
+      transformResponse: ({ flickr_images }: Rocket) => flickr_images[0],
+    }),
   }),
 });
 
-export const { useGetLaunchesByQueryQuery } = spaceXApi;
+export const { useGetLaunchesByQueryQuery, useGetRocketImageByIdQuery } = spaceXApi;
