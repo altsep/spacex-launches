@@ -1,4 +1,4 @@
-export type Launch = Pick<LaunchFull, 'name' | 'details' | 'date_utc' | 'date_unix' | 'success' | 'id' | 'rocket'>;
+export type Launch = Pick<LaunchFull, 'name' | 'details' | 'date_utc' | 'date_unix' | 'id' | 'rocket'>;
 
 export interface LaunchFull {
   fairings: Fairings | null;

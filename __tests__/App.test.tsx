@@ -1,8 +1,8 @@
-import { render } from '@testing-library/react';
 import { App } from '../src/App';
+import { renderWithProviders } from '../src/utils/test-utils';
 
 describe('App', () => {
   it('renders', () => {
-    render(<App />);
+    renderWithProviders(<App />);
   });
 });

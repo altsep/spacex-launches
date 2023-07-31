@@ -1,11 +1,11 @@
 import { Launch } from './launch.model';
 
-export type LaunchQueryRes = QueryRes<Launch>;
+export type LaunchesQueryRes = QueryRes<Launch>;
 
 export type QueryRes<T> = {
   docs: T[];
   totalDocs: number;
-  offset: number;
+  offset?: number;
   limit: number;
   totalPages: number;
   page: number;

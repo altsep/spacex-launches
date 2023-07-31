@@ -1,9 +1,9 @@
-import { useGetRocketImageByIdQuery } from '../../services/spaceX.service';
+import { useGetRocketImageByIdQuery } from '../../services/spaceXApi.service';
 
 type Props = { rocket: string | null };
 
 function CardImg({ rocket }: Props) {
-  const { data = null } = useGetRocketImageByIdQuery(rocket, { skip: !rocket });
+  const { data } = useGetRocketImageByIdQuery(rocket, { skip: !rocket });
 
   if (data != null) {
     return (

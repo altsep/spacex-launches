@@ -1,8 +1,9 @@
-import { CardList } from './components/cards/CardList';
-import { Controls } from './components/controls/Controls';
-
-// TODO: add tests
+// TODO: test: ensure cards are rendered in the CardList
+// TODO: test: ensure card image correctly handles request in CardImg
 // TODO: allow to conditionally enable infinite scroll
+
+import { CardList } from './components/cards';
+import { Controls } from './components/controls';
 
 function App() {
   return (

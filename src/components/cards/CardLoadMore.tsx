@@ -1,9 +1,9 @@
-import { useGetLaunchesByQueryQuery } from '../../services/spaceX.service';
+import { useGetLaunchesByQueryQuery } from '../../services/spaceXApi.service';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { incrementPage } from '../../store/queryArgOpts.slice';
 import { CardWrapper } from './CardWrapper';
 
-function LoadMore() {
+function CardLoadMore() {
   const queryOpts = useAppSelector((state) => state.queryArgOpts);
   const { data, isFetching } = useGetLaunchesByQueryQuery(queryOpts);
   const dispatch = useAppDispatch();
@@ -23,4 +23,4 @@ function LoadMore() {
   }
 }
 
-export { LoadMore };
+export { CardLoadMore };
