@@ -1,4 +1,4 @@
-import rocketImg from '../src/assets/rocket_placeholder.png';
+import rocketImg from './assets/rocket_placeholder.png';
 import { LaunchFull } from '../src/models/launch.model';
 
 export const mockLaunches: LaunchFull[] = [

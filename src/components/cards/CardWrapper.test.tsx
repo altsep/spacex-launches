@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { CardWrapper } from '../../src/components/cards/CardWrapper';
+import { CardWrapper } from './CardWrapper';
 
 describe('CardWrapper', () => {
   it('renders', () => {

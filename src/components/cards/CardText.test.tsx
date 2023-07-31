@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { mockLaunch } from '../../__mocks__/launch.mock';
-import { CardText } from '../../src/components/cards/CardText';
+import { mockLaunch } from '../../../__mocks__/launch.mock';
+import { CardText } from './CardText';
 
 describe('CardText', () => {
   const { name, details } = mockLaunch;

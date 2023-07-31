@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { Button } from '../../src/components/controls/Button';
+import { Button } from './Button';
 
 describe('Button', () => {
   const textContent = 'testBtn';
@@ -11,14 +11,18 @@ describe('Button', () => {
 
   it('renders button containing textContent prop value', () => {
     render(<Button textContent={textContent} handleClick={mockFn} />);
+
     const btn = screen.getByText(textContent);
+
     expect(btn).toBeInTheDocument();
   });
 
   it('runs handling function', () => {
     render(<Button textContent={textContent} handleClick={mockFn} />);
+
     const btn = screen.getByText(textContent);
     fireEvent.click(btn);
+
     expect(mockFn).toHaveBeenCalledTimes(1);
   });
 });

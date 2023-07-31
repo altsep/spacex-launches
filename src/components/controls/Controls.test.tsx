@@ -1,13 +1,13 @@
 import { fireEvent, screen } from '@testing-library/react';
-import { Controls } from '../../src/components/controls/Controls';
-import { renderWithProviders } from '../../src/utils/test-utils';
+import { Controls } from './Controls';
+import { renderWithProviders } from '../../utils/test-utils';
 
 describe('Controls', () => {
   it('renders', () => {
     renderWithProviders(<Controls />);
   });
 
-  it('alters state on sort', () => {
+  it('dispatches to state on click', () => {
     const { store } = renderWithProviders(<Controls />);
     const initialState = store.getState().queryArgOpts;
 
@@ -15,9 +15,8 @@ describe('Controls', () => {
     fireEvent.click(btn);
 
     const state = store.getState().queryArgOpts;
-    const assertion = initialState.sort !== state.sort;
 
     expect(state).toHaveProperty('sort');
-    expect(assertion).toBeTruthy();
+    expect(state.sort).not.toStrictEqual(initialState.sort);
   });
 });

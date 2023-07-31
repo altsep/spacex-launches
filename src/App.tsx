@@ -1,5 +1,4 @@
-// TODO: test: ensure cards are rendered in the CardList
-// TODO: test: ensure card image correctly handles request in CardImg
+// TODO: test: ensure more cards are rendered after getting appended on additional request
 // TODO: allow to conditionally enable infinite scroll
 
 import { CardList } from './components/cards';

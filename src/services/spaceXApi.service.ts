@@ -2,8 +2,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { QueryOptions } from '../models/launchesQueryArg.model';
 import { LaunchesQueryRes } from '../models/queryRes.model';
 import { Rocket } from '../models/rocket.model';
-import { API_BASE_URL } from '../utils/constants/apiBase.constant';
-import { DEFAULT_LAUNCHES_QUERY_ARG } from '../utils/constants/defaultLaunchesQueryArg.constant';
+import { API_BASE_URL, ApiPath } from '../utils/constants/api.constants';
+import { DEFAULT_LAUNCHES_QUERY_ARG } from '../utils/constants/queryArgs.constants';
 
 export const spaceXApi = createApi({
   reducerPath: 'spaceXApi',
@@ -18,7 +18,7 @@ export const spaceXApi = createApi({
         }
 
         return {
-          url: 'v5/launches/query',
+          url: `${ApiPath.launches}/query`,
           method: 'POST',
           body,
         };
@@ -36,7 +36,7 @@ export const spaceXApi = createApi({
       },
     }),
     getRocketImageById: builder.query<string, string | null>({
-      query: (id) => `v4/rockets/${id}`,
+      query: (id) => `${ApiPath.rockets}/${id}`,
       transformResponse: ({ flickr_images }: Rocket) => flickr_images[0],
     }),
   }),
