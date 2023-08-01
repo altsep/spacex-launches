@@ -11,7 +11,7 @@ describe('Controls', () => {
     const { store } = renderWithProviders(<Controls />);
     const initialState = store.getState().queryArgOpts;
 
-    const btn = screen.getByText('Sort by date');
+    const btn = screen.getByRole('button', { name: 'Sort by date' });
     fireEvent.click(btn);
 
     const state = store.getState().queryArgOpts;

@@ -1,7 +1,7 @@
 import { useGetLaunchesByQueryQuery } from '../../services/spaceXApi.service';
 import { useAppSelector } from '../../store/hooks';
 import { Card } from './Card';
-import { CardLoadMore } from './CardLoadMore';
+import { CardLoadMoreButton } from './CardLoadMoreButton';
 
 function CardList() {
   const queryOpts = useAppSelector((state) => state.queryArgOpts);
@@ -15,7 +15,7 @@ function CardList() {
       {launches.map((item) => (
         <Card item={item} key={item.id} />
       ))}
-      <CardLoadMore />
+      <CardLoadMoreButton />
     </div>
   );
 }

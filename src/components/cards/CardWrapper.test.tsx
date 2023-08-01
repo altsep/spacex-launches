@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { CardWrapper } from './CardWrapper';
 
 describe('CardWrapper', () => {
@@ -8,7 +8,7 @@ describe('CardWrapper', () => {
 
   it('children to render', () => {
     const childNode = 'Some text';
-    const { container } = render(<CardWrapper>{childNode}</CardWrapper>);
-    expect(container).toHaveTextContent(childNode);
+    render(<CardWrapper>{childNode}</CardWrapper>);
+    screen.getByText(childNode);
   });
 });

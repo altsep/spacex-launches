@@ -18,7 +18,7 @@ function Card({ item }: Props) {
         <CardText name={name} details={details} />
         <CardImg rocket={rocket} />
       </div>
-      <time className="font-mono text-xs absolute bottom-3 right-3" dateTime={date}>
+      <time className="font-mono text-xs absolute bottom-3 right-3" dateTime={date} role="time">
         {formattedDate}
       </time>
       <div className="border-b border-gray-300 lg:hidden" />

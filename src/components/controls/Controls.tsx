@@ -1,12 +1,12 @@
 import { useAppDispatch } from '../../store/hooks';
 import { toggleSort } from '../../store/slices/queryArgOpts.slice';
-import { Button } from './Button';
+import { ControlsButton } from './ControlsButton';
 
 function Controls() {
   const dispatch = useAppDispatch();
   return (
     <div className="flex justify-end gap-3">
-      <Button textContent="Sort by date" handleClick={() => dispatch(toggleSort())} />
+      <ControlsButton textContent="Sort by date" handleClick={() => dispatch(toggleSort())} />
     </div>
   );
 }

@@ -3,14 +3,16 @@ import { sortByDate } from './sorting.helpers';
 
 describe('sortByDate', () => {
   it('sorts ascendingly', () => {
-    const sortedArr = sortByDate(mockLaunches, 'asc');
+    const sortedArr = sortByDate(mockLaunches.slice(), 'asc');
     expect(Array.isArray(sortedArr)).toBe(true);
-    expect(sortedArr).toStrictEqual(mockLaunches.sort((a, b) => a.date_unix - b.date_unix));
+    const nativeSortArr = mockLaunches.slice().sort((a, b) => a.date_unix - b.date_unix);
+    expect(sortedArr).toStrictEqual(nativeSortArr);
   });
 
   it('sorts descendingly', () => {
-    const sortedArr = sortByDate(mockLaunches, 'desc');
+    const sortedArr = sortByDate(mockLaunches.slice(), 'desc');
     expect(Array.isArray(sortedArr)).toBe(true);
-    expect(sortedArr).toStrictEqual(mockLaunches.sort((a, b) => b.date_unix - a.date_unix));
+    const nativeSortArr = mockLaunches.slice().sort((a, b) => b.date_unix - a.date_unix);
+    expect(sortedArr).toStrictEqual(nativeSortArr);
   });
 });

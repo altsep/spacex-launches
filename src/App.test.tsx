@@ -12,7 +12,7 @@ describe('App', () => {
 
     let state = store.getState().queryArgOpts;
 
-    const btn = await screen.findByText('Load more...');
+    const btn = await screen.findByRole('button', { name: 'Load more...' });
 
     expect(screen.getAllByTestId('card').length).toBe(state.limit * state.page);
 
@@ -20,25 +20,25 @@ describe('App', () => {
 
     state = store.getState().queryArgOpts;
 
-    await screen.findByText('Load more...');
+    await screen.findByRole('button', { name: 'Load more...' });
 
     expect(screen.getAllByTestId('card').length).toBe(state.limit * state.page);
   });
 
-  it('does not append cards if page number equals 1', async () => {
+  it('does not append cards on refetch, if page number equals 1', async () => {
     const { store } = renderWithProviders(<App />);
 
     const { limit } = store.getState().queryArgOpts;
 
-    const btn = screen.getByText('Sort by date');
+    const btn = screen.getByRole('button', { name: 'Sort by date' });
 
-    await screen.findByText('Load more...');
+    await screen.findByRole('button', { name: 'Load more...' });
 
     expect(screen.getAllByTestId('card').length).toBe(limit);
 
     fireEvent.click(btn);
 
-    await screen.findByText('Load more...');
+    await screen.findByRole('button', { name: 'Load more...' });
 
     expect(screen.getAllByTestId('card').length).toBe(limit);
   });

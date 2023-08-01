@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { mockLaunch } from '../../../__mocks__/launch.mock';
 import { CardText } from './CardText';
 
@@ -9,12 +9,12 @@ describe('CardText', () => {
   });
 
   it('contains text passed as props', () => {
-    const { container } = render(<CardText name={name} details={details} />);
+    render(<CardText name={name} details={details} />);
 
-    expect(container).toHaveTextContent(name);
+    screen.getByText(name);
 
     if (details != null) {
-      expect(container).toHaveTextContent(details);
+      screen.getByText(details);
     }
   });
 });

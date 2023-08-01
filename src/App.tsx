@@ -1,6 +1,3 @@
-// TODO: test: ensure more cards are rendered after getting appended on additional request
-// TODO: allow to conditionally enable infinite scroll
-
 import { CardList } from './components/cards';
 import { Controls } from './components/controls';
 
