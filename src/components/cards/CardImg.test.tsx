@@ -10,7 +10,9 @@ describe('CardImg', () => {
 
   it('displays image', async () => {
     renderWithProviders(<CardImg rocket={mockLaunch.rocket} />);
+
     const img: HTMLImageElement = await screen.findByAltText('');
+
     expect(img).toBeInTheDocument();
     expect(img.src.length).toBeTruthy();
   });

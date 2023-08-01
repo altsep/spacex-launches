@@ -9,6 +9,7 @@ describe('CardWrapper', () => {
   it('children to render', () => {
     const childNode = 'Some text';
     render(<CardWrapper>{childNode}</CardWrapper>);
+
     screen.getByText(childNode);
   });
 });
