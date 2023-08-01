@@ -12,11 +12,7 @@ describe('CardLoadMoreButton', () => {
     const initialState = store.getState().queryArgOpts;
 
     const btn = await screen.findByRole('button', { name: 'Load more...' });
-
     fireEvent.click(btn);
-
-    screen.getByRole('button', { name: 'Loading...' });
-
     const state = store.getState().queryArgOpts;
 
     expect(state).toHaveProperty('page');
@@ -29,7 +25,6 @@ describe('CardLoadMoreButton', () => {
     const btn = await screen.findByRole('button', { name: 'Load more...' });
 
     fireEvent.click(btn);
-
     screen.getByRole('button', { name: 'Loading...' });
   });
 });

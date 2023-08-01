@@ -4,6 +4,7 @@ import { CardText } from './CardText';
 
 describe('CardText', () => {
   const { name, details } = mockLaunch;
+
   it('renders', () => {
     render(<CardText name={name} details={details} />);
   });

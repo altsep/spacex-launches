@@ -12,15 +12,12 @@ describe('App', () => {
     let state = store.getState().queryArgOpts;
 
     const btn = await screen.findByRole('button', { name: 'Load more...' });
-
     expect(screen.getAllByTestId('card').length).toBe(state.limit * state.page);
 
     fireEvent.click(btn);
-
     state = store.getState().queryArgOpts;
 
     await screen.findByRole('button', { name: 'Load more...' });
-
     expect(screen.getAllByTestId('card').length).toBe(state.limit * state.page);
   });
 
@@ -31,13 +28,11 @@ describe('App', () => {
     const btn = screen.getByRole('button', { name: 'Sort by date' });
 
     await screen.findByRole('button', { name: 'Load more...' });
-
     expect(screen.getAllByTestId('card').length).toBe(limit);
 
     fireEvent.click(btn);
 
     await screen.findByRole('button', { name: 'Load more...' });
-
     expect(screen.getAllByTestId('card').length).toBe(limit);
   });
 });
