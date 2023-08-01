@@ -6,12 +6,12 @@ import { sortByDate } from '../../src/utils/helpers/sorting.helpers';
 import placeholderImg from '../assets/rocket_placeholder.png';
 import { mockLaunchesQueryRes } from '../launchesQueryRes.mock';
 
-const transformDocs = (options: QueryOptions) => {
-  const startIndex = (options.page - 1) * options.limit;
-  const endIndex = startIndex + options.limit;
-  const sortMode = options.sort[0] === '-' ? 'desc' : 'asc';
-  const docs = sortByDate(mockLaunchesQueryRes.docs, sortMode).slice(startIndex, endIndex);
-  return docs;
+const transformDocs = ({ page, limit, sort }: QueryOptions) => {
+  const startIndex = (page - 1) * limit;
+  const endIndex = startIndex + limit;
+  const sortMode = sort[0] === '-' ? 'desc' : 'asc';
+  const sortedDocs = sortByDate([...mockLaunchesQueryRes.docs], sortMode);
+  return sortedDocs.slice(startIndex, endIndex);
 };
 
 export const handlers = [
