@@ -12,7 +12,7 @@ describe('CardList', () => {
 
   it('renders cards', async () => {
     const { store } = renderWithProviders(<CardList />);
-    const { page, limit } = store.getState().queryArgOpts;
+    const { page, limit } = store.getState().queryArgOpts.options;
 
     const cards = await screen.findAllByTestId('card');
 

@@ -12,18 +12,18 @@ describe('App', () => {
     let state = store.getState().queryArgOpts;
 
     const btn = await screen.findByRole('button', { name: 'Load more...' });
-    expect(screen.getAllByTestId('card').length).toBe(state.limit * state.page);
+    expect(screen.getAllByTestId('card').length).toBe(state.options.limit * state.options.page);
 
     fireEvent.click(btn);
     state = store.getState().queryArgOpts;
 
     await screen.findByRole('button', { name: 'Load more...' });
-    expect(screen.getAllByTestId('card').length).toBe(state.limit * state.page);
+    expect(screen.getAllByTestId('card').length).toBe(state.options.limit * state.options.page);
   });
 
   it('does not append cards on refetch, if page number equals 1', async () => {
     const { store } = renderWithProviders(<App />);
-    const { limit } = store.getState().queryArgOpts;
+    const { limit } = store.getState().queryArgOpts.options;
 
     const btn = screen.getByRole('button', { name: 'Sort by date' });
 

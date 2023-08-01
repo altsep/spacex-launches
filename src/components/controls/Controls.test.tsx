@@ -1,6 +1,6 @@
 import { fireEvent, screen } from '@testing-library/react';
-import { Controls } from './Controls';
 import { renderWithProviders } from '../../utils/test-utils';
+import { Controls } from './Controls';
 
 describe('Controls', () => {
   it('renders', () => {
@@ -9,12 +9,12 @@ describe('Controls', () => {
 
   it('dispatches to state on click', () => {
     const { store } = renderWithProviders(<Controls />);
-    const initialState = store.getState().queryArgOpts;
+    const initialState = store.getState().queryArgOpts.options;
 
     const btn = screen.getByRole('button', { name: 'Sort by date' });
     fireEvent.click(btn);
 
-    const state = store.getState().queryArgOpts;
+    const state = store.getState().queryArgOpts.options;
 
     expect(state).toHaveProperty('sort');
     expect(state.sort).not.toStrictEqual(initialState.sort);

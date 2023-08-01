@@ -1,1 +1,2 @@
 export const CARD_DATE_FORMAT = 'DD/MM/YYYY';
+export const DATEPICKER_DATE_FORMAT = 'YYYY-MM-DD';

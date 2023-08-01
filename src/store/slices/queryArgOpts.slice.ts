@@ -4,21 +4,33 @@ import { DEFAULT_LAUNCHES_QUERY_ARG } from '../../utils/constants';
 
 export const queryArgOptsSlice = createSlice({
   name: 'queryArgOpts',
-  initialState: DEFAULT_LAUNCHES_QUERY_ARG.options,
+  initialState: DEFAULT_LAUNCHES_QUERY_ARG,
   reducers: {
     toggleSort: (state) => {
-      return { ...state, sort: state.sort[0] === '-' ? state.sort.slice(1) : `-${state.sort}`, page: 1 };
+      const { sort } = state.options;
+      state.options.sort = sort[0] === '-' ? sort.slice(1) : `-${sort}`;
+      state.options.page = 1;
     },
     incrementPage: (state, action: PayloadAction<LaunchesQueryRes | undefined>) => {
       if (action.payload && action.payload.hasNextPage) {
-        return { ...state, page: action.payload.nextPage };
+        state.options.page = action.payload.nextPage;
       }
-
-      return state;
+    },
+    setStartDate: (state, action: PayloadAction<string | undefined>) => {
+      if (action.payload != null) {
+        state.query.date_utc.$gte = action.payload;
+        state.options.page = 1;
+      }
+    },
+    setEndDate: (state, action: PayloadAction<string | undefined>) => {
+      if (action.payload != null) {
+        state.query.date_utc.$lte = action.payload;
+        state.options.page = 1;
+      }
     },
   },
 });
 
-export const { toggleSort, incrementPage } = queryArgOptsSlice.actions;
+export const { toggleSort, incrementPage, setStartDate, setEndDate } = queryArgOptsSlice.actions;
 
 export const queryArgOpts = queryArgOptsSlice.reducer;

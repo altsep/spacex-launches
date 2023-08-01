@@ -85,7 +85,7 @@ module.exports = (_env, argv) => {
   const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
 
   config.module.rules.push({
-    test: /\.s[ac]ss$/i,
+    test: /\.s?[ac]ss$/i,
     use: [stylesHandler, 'css-loader', 'postcss-loader', 'sass-loader'],
   });
 
