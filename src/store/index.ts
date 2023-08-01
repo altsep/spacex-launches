@@ -1,7 +1,7 @@
 import { PreloadedState, combineReducers, configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { spaceXApi } from '../services/spaceXApi.service';
-import { queryArgOpts } from './queryArgOpts.slice';
+import { queryArgOpts } from './slices/queryArgOpts.slice';
 
 const rootReducer = combineReducers({
   [spaceXApi.reducerPath]: spaceXApi.reducer,

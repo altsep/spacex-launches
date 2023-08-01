@@ -1,6 +1,6 @@
 import { useGetLaunchesByQueryQuery } from '../../services/spaceXApi.service';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { incrementPage } from '../../store/queryArgOpts.slice';
+import { incrementPage } from '../../store/slices/queryArgOpts.slice';
 import { CardWrapper } from './CardWrapper';
 
 function CardLoadMore() {

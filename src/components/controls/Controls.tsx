@@ -1,5 +1,5 @@
 import { useAppDispatch } from '../../store/hooks';
-import { toggleSort } from '../../store/queryArgOpts.slice';
+import { toggleSort } from '../../store/slices/queryArgOpts.slice';
 import { Button } from './Button';
 
 function Controls() {

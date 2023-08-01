@@ -1,25 +1,22 @@
 import { screen } from '@testing-library/react';
 import { rest } from 'msw';
 import { server } from '../../../__mocks__/api/server';
-import { mockLaunchesQueryRes } from '../../../__mocks__/launchesQueryRes.mock';
-import { API_BASE_URL } from '../../utils/constants';
-import { ApiPath } from '../../utils/constants/api.constants';
+import { API_BASE_URL, ApiPath } from '../../utils/constants';
 import { renderWithProviders } from '../../utils/test-utils';
 import { CardList } from './CardList';
 
 describe('CardList', () => {
-  const mockCardsLen = mockLaunchesQueryRes.docs.length;
-
   it('renders', () => {
     renderWithProviders(<CardList />);
   });
 
   it('renders cards', async () => {
-    renderWithProviders(<CardList />);
+    const { store } = renderWithProviders(<CardList />);
+    const { page, limit } = store.getState().queryArgOpts;
 
     const cards = await screen.findAllByTestId('card');
 
-    expect(cards.length).toStrictEqual(mockCardsLen);
+    expect(cards.length).toStrictEqual(page * limit);
   });
 
   it('handles error response', async () => {

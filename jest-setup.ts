@@ -1,10 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import '@testing-library/jest-dom';
-import React from 'react';
 import 'whatwg-fetch';
+import React from 'react';
 import { server } from './__mocks__/api/server';
-import { spaceXApi } from './src/services/spaceXApi.service';
-import { store } from './src/store';
 
 global.React = React;
 
@@ -16,7 +14,6 @@ beforeAll(() => {
 afterEach(() => {
   // Reset any runtime handlers tests may use.
   server.resetHandlers();
-  store.dispatch(spaceXApi.util.resetApiState());
 });
 
 afterAll(() => {

@@ -5,14 +5,23 @@ import { App } from '../src/App';
 import '../src/index.scss';
 import { store } from '../src/store';
 
-const container = document.getElementById('root') as HTMLDivElement;
+async function render() {
+  if (process.env.NODE_ENV === 'development') {
+    const { worker } = await import('../__mocks__/api/browser');
+    await worker.start();
+  }
 
-const root = createRoot(container);
+  const container = document.getElementById('root') as HTMLDivElement;
 
-root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
-);
+  const root = createRoot(container);
+
+  root.render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>
+  );
+}
+
+render().catch(console.error);
