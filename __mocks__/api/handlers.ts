@@ -9,7 +9,7 @@ import { mockLaunchesQueryRes } from '../launchesQueryRes.mock';
 export const handlers = [
   rest.post(`${API_BASE_URL}${ApiPath.launches}/query`, async (req, res, ctx) => {
     const { options }: LaunchesQueryArg = await req.json();
-    const startIndex = options.page * options.limit;
+    const startIndex = (options.page - 1) * options.limit;
     const endIndex = startIndex + options.limit;
     const sortMode = options.sort[0] === '-' ? 'desc' : 'asc';
     const docs = sortByDate(mockLaunchesQueryRes.docs, sortMode).slice(startIndex, endIndex);
