@@ -11,7 +11,7 @@ export const DEFAULT_LAUNCHES_QUERY_ARG: LaunchesQueryArg = {
   options: {
     select: 'id name details date_utc date_unix rocket',
     limit: 10,
-    sort: '-date_unix',
+    sort: { date_unix: 'desc' },
     page: 1,
   },
 };

@@ -1,3 +1,5 @@
+import { Launch } from './launch.model';
+
 export interface LaunchesQueryArg {
   query: QueryParams;
   options: QueryOptions;
@@ -16,6 +18,10 @@ export interface DateUTC {
 export interface QueryOptions {
   select: string;
   limit: number;
-  sort: string;
+  sort: Sort;
   page: number;
 }
+
+export type Sort = Partial<{ [key in keyof Launch]: SortOrder }>;
+
+export type SortOrder = 'asc' | 'desc';

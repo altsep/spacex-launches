@@ -3,29 +3,30 @@ import { mockLaunchesQueryRes } from '../../../__mocks__/launchesQueryRes.mock';
 import { incrementPage, queryArgOptsSlice, setEndDate, setStartDate, toggleSort } from './queryArgOpts.slice';
 
 describe('queryArgOptsSlice.toggleSort', () => {
-  const initialState = queryArgOptsSlice.getInitialState();
+  const initialState = queryArgOptsSlice.getInitialState().options;
 
   it('toggles sort property', () => {
-    const desc = '-date_unix';
-    const asc = 'date_unix';
+    expect(initialState.sort).toHaveProperty('date_unix');
 
-    expect(initialState.options.sort).toBe(desc);
+    expect(initialState.sort.date_unix).toBe('desc');
 
-    store.dispatch(toggleSort());
-
-    const state1 = store.getState().queryArgOpts;
-
-    expect(state1.options.sort).toBe(asc);
+    const getSortState = () => store.getState().queryArgOpts.options.sort;
 
     store.dispatch(toggleSort());
 
-    const state2 = store.getState().queryArgOpts;
+    const state1 = getSortState().date_unix;
 
-    expect(state2.options.sort).toBe(desc);
+    expect(state1).toBe('asc');
+
+    store.dispatch(toggleSort());
+
+    const state2 = getSortState().date_unix;
+
+    expect(state2).toBe('desc');
   });
 
   it('resets page property after increment', () => {
-    expect(initialState.options.page).toBe(1);
+    expect(initialState.page).toBe(1);
 
     store.dispatch(incrementPage(mockLaunchesQueryRes));
 

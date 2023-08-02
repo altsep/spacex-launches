@@ -8,15 +8,14 @@ import placeholderImg from '../assets/rocket_placeholder.png';
 import { mockLaunchesQueryRes } from '../launchesQueryRes.mock';
 import { Launch } from '../../src/models/launch.model';
 
-const processDocsByQuery = (arr: Launch[], queryArg: LaunchesQueryArg) => {
+const transformDocs = (arr: Launch[], queryArg: LaunchesQueryArg) => {
   const { query, options } = queryArg;
   const startMs = dayjs(query.date_utc.$gte).unix();
   const endMs = dayjs(query.date_utc.$lte).unix();
   const startIndex = (options.page - 1) * options.limit;
   const endIndex = startIndex + options.limit;
-  const sortMode = options.sort[0] === '-' ? 'desc' : 'asc';
   const filteredDocs = arr.filter(({ date_unix }) => date_unix >= startMs && date_unix <= endMs);
-  const sortedDocs = sortByDate(filteredDocs, sortMode);
+  const sortedDocs = sortByDate(filteredDocs, options.sort.date_unix);
   const docsSelection = sortedDocs.slice(startIndex, endIndex);
   return { docs: docsSelection, filteredDocs };
 };
@@ -25,7 +24,7 @@ export const handlers = [
   rest.post(`${API_BASE_URL}${ApiPath.launches}/query`, async (req, res, ctx) => {
     const queryArg: LaunchesQueryArg = await req.json();
     const { page, limit } = queryArg.options;
-    const { docs, filteredDocs } = processDocsByQuery(mockLaunchesQueryRes.docs, queryArg);
+    const { docs, filteredDocs } = transformDocs(mockLaunchesQueryRes.docs, queryArg);
     const totalPages = Math.ceil(filteredDocs.length / limit);
     const data = {
       ...mockLaunchesQueryRes,
