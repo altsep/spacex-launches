@@ -6,22 +6,21 @@ describe('queryArgOptsSlice.toggleSort', () => {
   const initialState = queryArgOptsSlice.getInitialState();
 
   it('toggles sort property', () => {
-    const desc = '-date_unix';
-    const asc = 'date_unix';
+    expect(initialState.sort).toHaveProperty('date_unix');
 
-    expect(initialState.sort).toBe(desc);
-
-    store.dispatch(toggleSort());
-
-    const state1 = store.getState().queryArgOpts;
-
-    expect(state1.sort).toBe(asc);
+    expect(initialState.sort.date_unix).toBe('desc');
 
     store.dispatch(toggleSort());
 
-    const state2 = store.getState().queryArgOpts;
+    const state1 = store.getState().queryArgOpts.sort.date_unix;
 
-    expect(state2.sort).toBe(desc);
+    expect(state1).toBe('asc');
+
+    store.dispatch(toggleSort());
+
+    const state2 = store.getState().queryArgOpts.sort.date_unix;
+
+    expect(state2).toBe('desc');
   });
 
   it('resets page property after increment', () => {

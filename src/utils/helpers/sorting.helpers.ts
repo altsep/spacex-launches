@@ -1,16 +1,9 @@
 import * as TimSort from 'timsort';
 import { Launch } from '../../models/launch.model';
+import { SortOrder } from '../../models/launchesQueryArg.model';
 
-export const sortByDate = (arr: Launch[], mode: 'asc' | 'desc') => {
-  const newArr = [...arr];
+export const sortByDate = (arr: Launch[], mode?: SortOrder) => {
+  TimSort.sort(arr, (a, b) => (mode === 'desc' ? b.date_unix - a.date_unix : a.date_unix - b.date_unix));
 
-  if (mode === 'asc') {
-    TimSort.sort(newArr, (a, b) => a.date_unix - b.date_unix);
-  }
-
-  if (mode === 'desc') {
-    TimSort.sort(newArr, (a, b) => b.date_unix - a.date_unix);
-  }
-
-  return newArr;
+  return arr;
 };

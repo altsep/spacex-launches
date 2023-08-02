@@ -9,8 +9,7 @@ import { mockLaunchesQueryRes } from '../launchesQueryRes.mock';
 const transformDocs = ({ page, limit, sort }: QueryOptions) => {
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit;
-  const sortMode = sort[0] === '-' ? 'desc' : 'asc';
-  const sortedDocs = sortByDate([...mockLaunchesQueryRes.docs], sortMode);
+  const sortedDocs = sortByDate([...mockLaunchesQueryRes.docs], sort.date_unix);
   return sortedDocs.slice(startIndex, endIndex);
 };
 
