@@ -1,6 +1,6 @@
 import { fireEvent, screen } from '@testing-library/react';
-import { Controls } from './Controls';
 import { renderWithProviders } from '../../utils/test-utils';
+import { Controls } from './Controls';
 
 describe('Controls', () => {
   it('renders', () => {

@@ -7,10 +7,10 @@ export const queryArgOptsSlice = createSlice({
   initialState: DEFAULT_LAUNCHES_QUERY_ARG.options,
   reducers: {
     toggleSort: (state) => {
-      return { ...state, sort: { date_unix: state.sort.date_unix === 'asc' ? 'desc' : 'asc' }, page: 1 };
+      return { ...state, sort: { date_unix: state.sort.date_unix === 'desc' ? 'asc' : 'desc' }, page: 1 };
     },
     incrementPage: (state, action: PayloadAction<LaunchesQueryRes | undefined>) => {
-      if (action.payload && action.payload.hasNextPage) {
+      if (action.payload?.hasNextPage) {
         return { ...state, page: action.payload.nextPage };
       }
 

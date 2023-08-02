@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import { rest } from 'msw';
 import { server } from '../../../__mocks__/api/server';
 import { API_BASE_URL, ApiPath } from '../../utils/constants';
@@ -10,13 +10,22 @@ describe('CardList', () => {
     renderWithProviders(<CardList />);
   });
 
-  it('renders cards', async () => {
+  it('renders the right amount cards initially', async () => {
     const { store } = renderWithProviders(<CardList />);
-    const { page, limit } = store.getState().queryArgOpts;
+    const { limit, page } = store.getState().queryArgOpts;
 
-    const cards = await screen.findAllByTestId('card');
+    expect((await screen.findAllByTestId('card')).length).toBe(limit * page);
+  });
 
-    expect(cards.length).toStrictEqual(page * limit);
+  it('renders the right amount of cards after append', async () => {
+    const { store } = renderWithProviders(<CardList />);
+
+    const btn = await screen.findByRole('button', { name: 'Load more...' });
+    fireEvent.click(btn);
+    await screen.findByRole('button', { name: 'Load more...' });
+    const { limit, page } = store.getState().queryArgOpts;
+
+    expect(screen.getAllByTestId('card').length).toBe(limit * page);
   });
 
   it('handles error response', async () => {
