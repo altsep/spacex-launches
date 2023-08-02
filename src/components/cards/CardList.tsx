@@ -1,12 +1,18 @@
+import { useScroll } from '../../hooks/useScroll';
 import { useGetLaunchesByQueryQuery } from '../../services/spaceXApi.service';
-import { useAppSelector } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { incrementPage } from '../../store/slices/queryArgOpts.slice';
 import { Card } from './Card';
 import { CardLoadMoreButton } from './CardLoadMoreButton';
 
 function CardList() {
   const queryOpts = useAppSelector((state) => state.queryArgOpts);
-  const { data, error } = useGetLaunchesByQueryQuery(queryOpts);
+  const { data, error, isFetching } = useGetLaunchesByQueryQuery(queryOpts);
   const launches = data?.docs || [];
+  const dispatch = useAppDispatch();
+  const handleIncrement = () => dispatch(incrementPage(data));
+
+  useScroll(handleIncrement, isFetching);
 
   if (error) return 'Error occured';
 

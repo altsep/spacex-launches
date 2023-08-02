@@ -16,17 +16,13 @@ export const queryArgOptsSlice = createSlice({
         state.options.page = action.payload.nextPage;
       }
     },
-    setStartDate: (state, action: PayloadAction<string | undefined>) => {
-      if (action.payload != null) {
-        state.query.date_utc.$gte = action.payload;
-        state.options.page = 1;
-      }
+    setStartDate: (state, action: PayloadAction<string>) => {
+      state.query.date_utc.$gte = action.payload;
+      state.options.page = 1;
     },
-    setEndDate: (state, action: PayloadAction<string | undefined>) => {
-      if (action.payload != null) {
-        state.query.date_utc.$lte = action.payload;
-        state.options.page = 1;
-      }
+    setEndDate: (state, action: PayloadAction<string>) => {
+      state.query.date_utc.$lte = action.payload;
+      state.options.page = 1;
     },
   },
 });

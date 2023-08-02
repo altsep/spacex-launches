@@ -69,41 +69,29 @@ describe('queryArgOptsSlice.incrementPage', () => {
 });
 
 describe('queryArgOptsSlice.setStartDate', () => {
-  const initialState = queryArgOptsSlice.getInitialState();
-  const initialValue = initialState.query.date_utc.$gte;
   const mockDate = new Date('2020-05-25').toISOString();
 
   it('setStartDate sets value', () => {
-    const getDateValue = () => store.getState().queryArgOpts.query.date_utc.$gte;
-    const getPage = () => store.getState().queryArgOpts.options.page;
-
-    store.dispatch(setStartDate());
-
-    expect(getDateValue()).toBe(initialValue);
-
     store.dispatch(setStartDate(mockDate));
 
-    expect(getDateValue()).toBe(mockDate);
-    expect(getPage()).toBe(1);
+    const dateValue = store.getState().queryArgOpts.query.date_utc.$gte;
+    const { page } = store.getState().queryArgOpts.options;
+
+    expect(dateValue).toBe(mockDate);
+    expect(page).toBe(1);
   });
 });
 
 describe('queryArgOptsSlice.setEndDate', () => {
-  const initialState = queryArgOptsSlice.getInitialState();
-  const initialValue = initialState.query.date_utc.$lte;
   const mockDate = new Date('2020-05-25').toISOString();
 
   it('sets value', () => {
-    const getDateValue = () => store.getState().queryArgOpts.query.date_utc.$lte;
-    const getPage = () => store.getState().queryArgOpts.options.page;
-
-    store.dispatch(setEndDate());
-
-    expect(getDateValue()).toBe(initialValue);
-
     store.dispatch(setEndDate(mockDate));
 
-    expect(getDateValue()).toBe(mockDate);
-    expect(getPage()).toBe(1);
+    const dateValue = store.getState().queryArgOpts.query.date_utc.$lte;
+    const { page } = store.getState().queryArgOpts.options;
+
+    expect(dateValue).toBe(mockDate);
+    expect(page).toBe(1);
   });
 });

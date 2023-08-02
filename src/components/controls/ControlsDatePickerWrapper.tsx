@@ -11,16 +11,20 @@ function ControlsDatePickerWrapper() {
     <>
       <ControlsDatePicker
         handleChange={(e: ChangeEvent<HTMLInputElement>) => {
-          const startDate = e.target.valueAsDate?.toISOString();
-          dispatch(setStartDate(startDate));
+          const ISODate = e.target.valueAsDate?.toISOString();
+          if (ISODate != null) {
+            dispatch(setStartDate(ISODate));
+          }
         }}
         labelText="Start date"
         initialValue={dateUTC.$gte}
       />
       <ControlsDatePicker
         handleChange={(e: ChangeEvent<HTMLInputElement>) => {
-          const endDate = e.target.valueAsDate?.toISOString();
-          dispatch(setEndDate(endDate));
+          const ISODate = e.target.valueAsDate?.toISOString();
+          if (ISODate != null) {
+            dispatch(setEndDate(ISODate));
+          }
         }}
         labelText="End date"
         initialValue={dateUTC.$lte}

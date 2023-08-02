@@ -14,6 +14,8 @@ describe('ControlsDatePickerWrapper', () => {
     const allInputs = screen.getAllByLabelText(/date/i);
 
     allInputs.forEach((input) => {
+      fireEvent.change(input, { target: { value: null } });
+      expect(input).toHaveValue('');
       fireEvent.change(input, { target: { value: mockValue } });
       expect(input).toHaveValue(mockValue);
     });
