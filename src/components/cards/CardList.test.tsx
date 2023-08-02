@@ -12,9 +12,9 @@ describe('CardList', () => {
 
   it('renders the right amount cards initially', async () => {
     const { store } = renderWithProviders(<CardList />);
-    const { limit, page } = store.getState().queryArgOpts;
+    const { limit } = store.getState().queryArgOpts;
 
-    expect((await screen.findAllByTestId('card')).length).toBe(limit * page);
+    expect((await screen.findAllByTestId('card')).length).toBe(limit);
   });
 
   it('renders the right amount of cards after append', async () => {
