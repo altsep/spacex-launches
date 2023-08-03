@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { LaunchesQueryRes } from '../../models/queryRes.model';
 import { DEFAULT_LAUNCHES_QUERY_ARG } from '../../utils/constants';
+import { DateUTC } from '../../models/launchesQueryArg.model';
 
 export const queryArgSlice = createSlice({
   name: 'queryArg',
@@ -16,21 +17,13 @@ export const queryArgSlice = createSlice({
         state.options.page = action.payload.nextPage;
       }
     },
-    setStartDate: (state, action: PayloadAction<string | undefined>) => {
-      if (action.payload) {
-        state.query.date_utc.$gte = action.payload;
-        state.options.page = 1;
-      }
-    },
-    setEndDate: (state, action: PayloadAction<string | undefined>) => {
-      if (action.payload) {
-        state.query.date_utc.$lte = action.payload;
-        state.options.page = 1;
-      }
+    setDateUTC: (state, action: PayloadAction<DateUTC>) => {
+      state.query.date_utc = action.payload;
+      state.options.page = 1;
     },
   },
 });
 
-export const { toggleSort, incrementPage, setStartDate, setEndDate } = queryArgSlice.actions;
+export const { toggleSort, incrementPage, setDateUTC } = queryArgSlice.actions;
 
 export const queryArg = queryArgSlice.reducer;

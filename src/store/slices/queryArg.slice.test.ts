@@ -1,6 +1,6 @@
 import { store } from '..';
 import { mockLaunchesQueryRes } from '../../../__mocks__/launchesQueryRes.mock';
-import { incrementPage, queryArgSlice, setEndDate, setStartDate, toggleSort } from './queryArg.slice';
+import { incrementPage, queryArgSlice, setDateUTC, toggleSort } from './queryArg.slice';
 
 describe('queryArgOptsSlice.toggleSort', () => {
   const initialState = queryArgSlice.getInitialState().options;
@@ -68,30 +68,17 @@ describe('queryArgSlice.incrementPage', () => {
   });
 });
 
-describe('queryArgSlice.setStartDate', () => {
+describe('queryArgSlice.setDateUTC', () => {
   const mockDate = new Date('2020-05-25').toISOString();
+  const mockDateUTCObj = { $gte: mockDate, $lte: mockDate };
 
   it('setStartDate sets value', () => {
-    store.dispatch(setStartDate(mockDate));
+    store.dispatch(setDateUTC(mockDateUTCObj));
 
-    const queryISODate = store.getState().queryArg.query.date_utc.$gte;
+    const queryDateUTCObj = store.getState().queryArg.query.date_utc;
     const { page } = store.getState().queryArg.options;
 
-    expect(queryISODate).toBe(mockDate);
-    expect(page).toBe(1);
-  });
-});
-
-describe('queryArgSlice.setEndDate', () => {
-  const mockDate = new Date('2020-05-25').toISOString();
-
-  it('sets value', () => {
-    store.dispatch(setEndDate(mockDate));
-
-    const queryISODate = store.getState().queryArg.query.date_utc.$lte;
-    const { page } = store.getState().queryArg.options;
-
-    expect(queryISODate).toBe(mockDate);
+    expect(queryDateUTCObj).toStrictEqual(mockDateUTCObj);
     expect(page).toBe(1);
   });
 });
