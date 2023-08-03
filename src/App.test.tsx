@@ -1,6 +1,8 @@
 import { fireEvent, screen, waitFor } from '@testing-library/react';
-import dayjs from 'dayjs';
 import { App } from './App';
+import { Launch } from './models/launch.model';
+import { spaceXApi } from './services/spaceXApi.service';
+import { sortByDate } from './utils/helpers/sorting.helpers';
 import { renderWithProviders } from './utils/test-utils';
 
 describe('App', () => {
@@ -22,23 +24,26 @@ describe('App', () => {
     expect(screen.getAllByTestId('card').length).toBe(limit);
   });
 
-  it('renders cards in the correct order if more cards were appended after sort', async () => {
+  it('merges docs in the correct order if more cards were appended after sort', async () => {
     const { store } = renderWithProviders(<App />);
     const sortBtn = screen.getByRole('button', { name: 'Sort by date' });
     const loadBtn = await screen.findByRole('button', { name: 'Load more...' });
 
     fireEvent.click(sortBtn);
-
     await waitFor(() => expect(screen.queryByText('Loading...')).not.toBeInTheDocument());
     fireEvent.click(loadBtn);
-
     await waitFor(() => expect(screen.queryByText('Loading...')).not.toBeInTheDocument());
 
-    const state = store.getState().queryArgOpts;
-    const times = screen.getAllByRole<HTMLTimeElement>('time').map(({ dateTime }) => dayjs(dateTime).unix());
-    const sortedTimes = times.slice().sort((a, b) => (state.sort.date_unix === 'asc' ? a - b : b - a));
+    const options = store.getState().queryArgOpts;
+    const selector = spaceXApi.endpoints.getLaunchesByQuery.select(options);
+    const queryState = selector(store.getState());
 
-    expect(times.length).toBe(state.limit * state.page);
-    expect(times).toStrictEqual(sortedTimes);
+    expect(queryState.status).toBe('fulfilled');
+
+    const docs: Launch[] = queryState.data?.docs || [];
+    const sortedDocs = sortByDate(docs.slice(), options.sort.date_unix);
+
+    expect(docs.length).toBe(options.limit * options.page);
+    expect(docs).toStrictEqual(sortedDocs);
   });
 });
