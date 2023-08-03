@@ -20,22 +20,23 @@ const transformDocs = (arr: Launch[], queryArg: LaunchesQueryArg) => {
   return { docs: docsSelection, filteredDocs };
 };
 
-export const handlers = [
-  rest.post(`${API_BASE_URL}${ApiPath.launches}/query`, async (req, res, ctx) => {
-    const queryArg: LaunchesQueryArg = await req.json();
-    const { page, limit } = queryArg.options;
-    const { docs, filteredDocs } = transformDocs(mockLaunchesQueryRes.docs, queryArg);
-    const totalPages = Math.ceil(filteredDocs.length / limit);
-    const data = {
-      ...mockLaunchesQueryRes,
-      page,
-      hasNextPage: page < totalPages,
-      nextPage: page + 1,
-      docs,
-    };
-    return res(ctx.status(200), ctx.json(data), ctx.delay(30));
-  }),
-  rest.get(`${API_BASE_URL}${ApiPath.rockets}/:id`, (_req, res, ctx) => {
-    return res(ctx.status(200), ctx.json({ flickr_images: [placeholderImg] }), ctx.delay(30));
-  }),
-];
+const getLaunchesByQuery = rest.post(`${API_BASE_URL}${ApiPath.launches}/query`, async (req, res, ctx) => {
+  const queryArg: LaunchesQueryArg = await req.json();
+  const { page, limit } = queryArg.options;
+  const { docs, filteredDocs } = transformDocs(mockLaunchesQueryRes.docs, queryArg);
+  const totalPages = Math.ceil(filteredDocs.length / limit);
+  const data = {
+    ...mockLaunchesQueryRes,
+    page,
+    hasNextPage: page < totalPages,
+    nextPage: page + 1,
+    docs,
+  };
+  return res(ctx.status(200), ctx.json(data), ctx.delay(30));
+});
+
+const getRocketById = rest.get(`${API_BASE_URL}${ApiPath.rockets}/:id`, (_req, res, ctx) => {
+  return res(ctx.status(200), ctx.json({ flickr_images: [placeholderImg] }), ctx.delay(30));
+});
+
+export const handlers = [getLaunchesByQuery, getRocketById];
