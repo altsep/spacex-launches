@@ -2,8 +2,8 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { LaunchesQueryRes } from '../../models/queryRes.model';
 import { DEFAULT_LAUNCHES_QUERY_ARG } from '../../utils/constants';
 
-export const queryArgOptsSlice = createSlice({
-  name: 'queryArgOpts',
+export const queryArgSlice = createSlice({
+  name: 'queryArg',
   initialState: DEFAULT_LAUNCHES_QUERY_ARG,
   reducers: {
     toggleSort: (state) => {
@@ -16,17 +16,21 @@ export const queryArgOptsSlice = createSlice({
         state.options.page = action.payload.nextPage;
       }
     },
-    setStartDate: (state, action: PayloadAction<string>) => {
-      state.query.date_utc.$gte = action.payload;
-      state.options.page = 1;
+    setStartDate: (state, action: PayloadAction<string | undefined>) => {
+      if (action.payload) {
+        state.query.date_utc.$gte = action.payload;
+        state.options.page = 1;
+      }
     },
-    setEndDate: (state, action: PayloadAction<string>) => {
-      state.query.date_utc.$lte = action.payload;
-      state.options.page = 1;
+    setEndDate: (state, action: PayloadAction<string | undefined>) => {
+      if (action.payload) {
+        state.query.date_utc.$lte = action.payload;
+        state.options.page = 1;
+      }
     },
   },
 });
 
-export const { toggleSort, incrementPage, setStartDate, setEndDate } = queryArgOptsSlice.actions;
+export const { toggleSort, incrementPage, setStartDate, setEndDate } = queryArgSlice.actions;
 
-export const queryArgOpts = queryArgOptsSlice.reducer;
+export const queryArg = queryArgSlice.reducer;

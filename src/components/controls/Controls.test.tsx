@@ -9,12 +9,12 @@ describe('Controls', () => {
 
   it('dispatches to state on click', () => {
     const { store } = renderWithProviders(<Controls />);
-    const initialState = store.getState().queryArgOpts.options;
+    const initialState = store.getState().queryArg.options;
 
     const btn = screen.getByRole('button', { name: 'Sort by date' });
     fireEvent.click(btn);
 
-    const state = store.getState().queryArgOpts.options;
+    const state = store.getState().queryArg.options;
 
     expect(state).toHaveProperty('sort');
     expect(state.sort).not.toStrictEqual(initialState.sort);

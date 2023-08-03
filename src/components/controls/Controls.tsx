@@ -1,5 +1,5 @@
 import { useAppDispatch } from '../../store/hooks';
-import { toggleSort } from '../../store/slices/queryArgOpts.slice';
+import { toggleSort } from '../../store/slices/queryArg.slice';
 import { ControlsButton } from './ControlsButton';
 import { ControlsDatePickerWrapper } from './ControlsDatePickerWrapper';
 

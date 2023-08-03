@@ -10,11 +10,11 @@ import { Launch } from '../../src/models/launch.model';
 
 const transformDocs = (arr: Launch[], queryArg: LaunchesQueryArg) => {
   const { query, options } = queryArg;
-  const startMs = dayjs(query.date_utc.$gte).unix();
-  const endMs = dayjs(query.date_utc.$lte).unix();
+  const unixStart = dayjs(query.date_utc.$gte).unix();
+  const unixEnd = dayjs(query.date_utc.$lte).unix();
   const startIndex = (options.page - 1) * options.limit;
   const endIndex = startIndex + options.limit;
-  const filteredDocs = arr.filter(({ date_unix }) => date_unix >= startMs && date_unix <= endMs);
+  const filteredDocs = arr.filter(({ date_unix }) => date_unix >= unixStart && date_unix <= unixEnd);
   const sortedDocs = sortByDate(filteredDocs, options.sort.date_unix);
   const docsSelection = sortedDocs.slice(startIndex, endIndex);
   return { docs: docsSelection, filteredDocs };
