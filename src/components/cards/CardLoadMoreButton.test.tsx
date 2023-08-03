@@ -25,6 +25,6 @@ describe('CardLoadMoreButton', () => {
     const btn = await screen.findByRole('button', { name: 'Load more...' });
 
     fireEvent.click(btn);
-    screen.getByRole('button', { name: 'Loading...' });
+    screen.getByText('Loading...');
   });
 });
