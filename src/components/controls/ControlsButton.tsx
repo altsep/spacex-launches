@@ -11,4 +11,5 @@ function ControlsButton({ textContent, handleClick }: Props) {
     </button>
   );
 }
+
 export { ControlsButton };

@@ -1,12 +1,12 @@
 import { useGetLaunchesByQueryQuery } from '../../services/spaceXApi.service';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { incrementPage } from '../../store/slices/queryArgOpts.slice';
+import { incrementPage } from '../../store/slices/queryArg.slice';
 import { Message } from '../shared';
 import { CardWrapper } from './CardWrapper';
 
 function CardLoadMoreButton() {
-  const queryOpts = useAppSelector((state) => state.queryArgOpts);
-  const { data, isFetching } = useGetLaunchesByQueryQuery(queryOpts);
+  const queryArg = useAppSelector((state) => state.queryArg);
+  const { data, isFetching } = useGetLaunchesByQueryQuery(queryArg);
   const dispatch = useAppDispatch();
 
   if (data?.hasNextPage) {

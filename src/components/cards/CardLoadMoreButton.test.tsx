@@ -9,11 +9,11 @@ describe('CardLoadMoreButton', () => {
 
   it('dispatches to state on click', async () => {
     const { store } = renderWithProviders(<CardLoadMoreButton />);
-    const initialState = store.getState().queryArgOpts;
+    const initialState = store.getState().queryArg.options;
 
     const btn = await screen.findByRole('button', { name: 'Load more...' });
     fireEvent.click(btn);
-    const state = store.getState().queryArgOpts;
+    const state = store.getState().queryArg.options;
 
     expect(state).toHaveProperty('page');
     expect(state.page).not.toStrictEqual(initialState.page);

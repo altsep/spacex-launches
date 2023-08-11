@@ -12,7 +12,7 @@ describe('CardList', () => {
 
   it('renders the right amount cards initially', async () => {
     const { store } = renderWithProviders(<CardList />);
-    const { limit } = store.getState().queryArgOpts;
+    const { limit } = store.getState().queryArg.options;
 
     expect((await screen.findAllByTestId('card')).length).toBe(limit);
   });
@@ -23,7 +23,7 @@ describe('CardList', () => {
     const btn = await screen.findByRole('button', { name: 'Load more...' });
     fireEvent.click(btn);
     await screen.findByRole('button', { name: 'Load more...' });
-    const { limit, page } = store.getState().queryArgOpts;
+    const { limit, page } = store.getState().queryArg.options;
 
     expect(screen.getAllByTestId('card').length).toBe(limit * page);
   });

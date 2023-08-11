@@ -12,7 +12,7 @@ describe('App', () => {
 
   it('does not append cards on refetch, given the page number equals 1', async () => {
     const { store } = renderWithProviders(<App />);
-    const { limit } = store.getState().queryArgOpts;
+    const { limit } = store.getState().queryArg.options;
 
     const btn = screen.getByRole('button', { name: 'Sort by date' });
     await screen.findByRole('button', { name: 'Load more...' });
@@ -34,13 +34,14 @@ describe('App', () => {
     fireEvent.click(loadBtn);
     await waitFor(() => expect(screen.queryByText('Loading...')).not.toBeInTheDocument());
 
-    const options = store.getState().queryArgOpts;
-    const selector = spaceXApi.endpoints.getLaunchesByQuery.select(options);
-    const queryState = selector(store.getState());
+    const { queryArg } = store.getState();
+    const { options } = queryArg;
+    const selector = spaceXApi.endpoints.getLaunchesByQuery.select(queryArg);
+    const query = selector(store.getState());
 
-    expect(queryState.status).toBe('fulfilled');
+    expect(query.status).toBe('fulfilled');
 
-    const docs: Launch[] = queryState.data?.docs || [];
+    const docs: Launch[] = query.data?.docs || [];
     const sortedDocs = sortByDate(docs.slice(), options.sort.date_unix);
 
     expect(docs.length).toBe(options.limit * options.page);

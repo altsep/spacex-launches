@@ -4,7 +4,7 @@ export const DEFAULT_LAUNCHES_QUERY_ARG: LaunchesQueryArg = {
   query: {
     date_utc: {
       $gte: '2015-01-01T00:00:00.000Z',
-      $lt: '2020-01-01T00:00:00.000Z',
+      $lte: '2020-01-01T00:00:00.000Z',
     },
     success: true,
   },

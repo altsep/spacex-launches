@@ -37,6 +37,7 @@ module.exports = {
     'no-console': [1, { allow: ['warn', 'error'] }],
     'import/prefer-default-export': 0,
     'react-hooks/exhaustive-deps': 1,
+    'no-param-reassign': 0,
   },
   ignorePatterns: ['dist', '*.cjs', '*.config.js', '*setup.js'],
   settings: {

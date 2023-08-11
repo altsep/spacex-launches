@@ -12,7 +12,7 @@ export interface QueryParams {
 
 export interface DateUTC {
   $gte: string;
-  $lt: string;
+  $lte: string;
 }
 
 export interface QueryOptions {
