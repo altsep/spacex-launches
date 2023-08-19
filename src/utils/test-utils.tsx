@@ -26,4 +26,18 @@ function renderWithProviders(
   return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
 }
 
-export { renderWithProviders };
+const mockIntersectionObserver = jest.fn();
+const mockObserve = jest.fn();
+const mockDisconnect = jest.fn();
+const mockIntersectionEntry = { isIntersecting: false };
+
+mockIntersectionObserver.mockImplementation((cb: (entries: Partial<IntersectionObserverEntry>[]) => void) => {
+  return {
+    observe: mockObserve.mockImplementation(() => {
+      cb([mockIntersectionEntry]);
+    }),
+    disconnect: mockDisconnect,
+  };
+});
+
+export { renderWithProviders, mockIntersectionObserver, mockObserve, mockDisconnect, mockIntersectionEntry };

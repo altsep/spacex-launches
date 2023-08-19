@@ -6,7 +6,7 @@ import { ControlsDatePicker } from './ControlsDatePicker';
 function Controls() {
   const dispatch = useAppDispatch();
   return (
-    <div className="flex justify-end items-end gap-3">
+    <div className="flex justify-end items-end gap-3 flex-wrap">
       <ControlsDatePicker labelText="Start date" name="$gte" />
       <ControlsDatePicker labelText="End date" name="$lte" />
       <ControlsButton textContent="Sort by date" handleClick={() => dispatch(toggleSort())} />
