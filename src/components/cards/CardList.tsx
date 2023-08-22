@@ -8,12 +8,15 @@ function CardList() {
   const queryArg = useAppSelector((state) => state.queryArg);
   const { data, error } = useGetLaunchesByQueryQuery(queryArg);
   const launches = data?.docs || [];
-  if (error) return <Message content="Error occured" />;
+
+  if (error) {
+    return <Message content="Error occured" />;
+  }
 
   return (
     <div className="w-full my-6 lg:grid lg:grid-cols-2 lg:gap-6 2xl:grid-cols-3">
       {launches.map((item) => (
-        <Card item={item} key={item.id} />
+        <Card key={item.id} item={item} />
       ))}
       <CardLoadMoreButton />
     </div>
